@@ -34,17 +34,31 @@ def get_engine() -> AsyncEngine:
     Get or create the async engine.
     
     Lazy initialization to avoid import-time database connection issues.
+    Handles SSL configuration for NeonDB/asyncpg compatibility.
     """
     global _engine
     if _engine is None:
+        import ssl
         from app.core.config import settings
         
+        # Get the database URL and strip query parameters for asyncpg
+        # (asyncpg doesn't accept sslmode/channel_binding params in URL)
+        db_url = settings.DATABASE_URL
+        if "?" in db_url:
+            db_url = db_url.split("?")[0]
+        
+        # Create SSL context for NeonDB
+        ssl_context = ssl.create_default_context()
+        ssl_context.check_hostname = False
+        ssl_context.verify_mode = ssl.CERT_NONE
+        
         _engine = create_async_engine(
-            settings.DATABASE_URL,
+            db_url,
             echo=settings.is_development,
             pool_pre_ping=True,
             pool_size=5,
             max_overflow=10,
+            connect_args={"ssl": ssl_context},
         )
     return _engine
 
