@@ -36,6 +36,22 @@ class Settings(BaseSettings):
     # Google Gemini API (for video analysis fallback)
     GEMINI_API_KEY: str = ""
 
+    # Email Configuration (SMTP)
+    SMTP_HOST: str = "smtp.gmail.com"
+    SMTP_PORT: int = 587
+    SMTP_USER: str = ""
+    SMTP_PASSWORD: str = ""
+    EMAIL_FROM_NAME: str = "Credlyse"
+    EMAIL_FROM_ADDRESS: str = "noreply@credlyse.com"
+    
+    # OTP Configuration
+    OTP_EXPIRE_MINUTES: int = 10
+    OTP_RESEND_COOLDOWN_SECONDS: int = 60
+    
+    # Google OAuth2
+    GOOGLE_CLIENT_ID: str = ""
+    GOOGLE_CLIENT_SECRET: str = ""
+
     model_config = SettingsConfigDict(
         env_file=".env",
         env_file_encoding="utf-8",
