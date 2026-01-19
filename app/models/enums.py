@@ -32,3 +32,10 @@ class WatchStatus(str, enum.Enum):
     NOT_STARTED = "NOT_STARTED"
     IN_PROGRESS = "IN_PROGRESS"
     WATCHED = "WATCHED"
+
+
+class OTPPurpose(str, enum.Enum):
+    """OTP purpose enumeration."""
+    EMAIL_VERIFICATION = "EMAIL_VERIFICATION"
+    PASSWORD_RESET = "PASSWORD_RESET"
+

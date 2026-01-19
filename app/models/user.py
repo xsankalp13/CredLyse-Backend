@@ -65,6 +65,33 @@ class User(Base):
         server_default=func.now(),
         nullable=False,
     )
+    
+    # Email Verification
+    is_email_verified: Mapped[bool] = mapped_column(
+        default=False,
+        nullable=False,
+    )
+    email_verified_at: Mapped[Optional[datetime]] = mapped_column(
+        DateTime(timezone=True),
+        nullable=True,
+    )
+    
+    # OAuth Fields
+    google_id: Mapped[Optional[str]] = mapped_column(
+        String(255),
+        unique=True,
+        nullable=True,
+        index=True,
+    )
+    auth_provider: Mapped[str] = mapped_column(
+        String(50),
+        default="email",
+        nullable=False,
+    )
+    profile_picture_url: Mapped[Optional[str]] = mapped_column(
+        String(512),
+        nullable=True,
+    )
 
     # Relationships
     creator_profile: Mapped[Optional["CreatorProfile"]] = relationship(

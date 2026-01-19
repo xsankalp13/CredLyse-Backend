@@ -1,0 +1,7 @@
+{
+    "sidebar": "#secondary ytd-watch-next-secondary-results-renderer, #secondary #related, #secondary ytd-compact-video-renderer, #secondary ytd-compact-playlist-renderer, #secondary ytd-compact-radio-renderer",
+    "comments": "#comments, ytd-comments, ytd-comment-thread-renderer",
+    "end_screen": ".ytp-ce-element, .ytp-endscreen-content, .ytp-ce-covering-overlay",
+    "version": "1.2.0",
+    "_comment": "IMPORTANT: Selectors target only CONTENT inside #secondary, not #secondary itself. The extension uses opacity:0 for hiding to preserve layout for our injected Progress Panel."
+}

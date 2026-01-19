@@ -13,6 +13,7 @@ from app.models.enums import (
     PlaylistType,
     AnalysisStatus,
     WatchStatus,
+    OTPPurpose,
 )
 
 # Models
@@ -23,6 +24,7 @@ from app.models.video import Video
 from app.models.enrollment import Enrollment
 from app.models.video_progress import VideoProgress
 from app.models.certificate import Certificate
+from app.models.otp_code import OTPCode
 
 __all__ = [
     # Base
@@ -32,6 +34,7 @@ __all__ = [
     "PlaylistType",
     "AnalysisStatus",
     "WatchStatus",
+    "OTPPurpose",
     # Models
     "User",
     "CreatorProfile",
@@ -40,4 +43,5 @@ __all__ = [
     "Enrollment",
     "VideoProgress",
     "Certificate",
+    "OTPCode",
 ]
